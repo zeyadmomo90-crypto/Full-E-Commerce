@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "674635070625",
+    "firebase_url": "https://full-e-commerce-998b4-default-rtdb.firebaseio.com",
+    "project_id": "full-e-commerce-998b4",
+    "storage_bucket": "full-e-commerce-998b4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674635070625:android:b50db041870a311368c4e0",
+        "android_client_info": {
+          "package_name": "com.example.ppp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "674635070625-te328d9106d5too00kh3cd5b1f6t6qjg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMl50vjJQuXeTcNtboM3XjJQs4q1-aDLA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "674635070625-te328d9106d5too00kh3cd5b1f6t6qjg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
