@@ -30,7 +30,7 @@ class CustomAppBar extends StatelessWidget {
               borderRadius: BorderRadius.circular(12.r),
             ),
             child: TextField(
-              style: TextStyle(fontSize: 16.sp),
+              style: Theme.of(context).textTheme.bodyMedium,
               textInputAction: TextInputAction.search,
               onChanged: (value) {
                 // context.read<ProductCubit>().searchProduct(value);
@@ -39,23 +39,16 @@ class CustomAppBar extends StatelessWidget {
               cursorColor: Colors.blue,
               decoration: InputDecoration(
                 border: InputBorder.none,
-                prefixIcon: Icon(Icons.search, color: Colors.blue, size: 24.sp),
+                prefixIcon: const Icon(Icons.search),
                 hintText: 'Search for products and categories',
-                hintStyle: TextStyle(color: Colors.grey, fontSize: 16.sp),
+                hintStyle: Theme.of(context).textTheme.titleLarge,
               ),
             ),
           ),
           Align(
             alignment: Alignment.centerRight,
             child: IconButton(
-              icon: Padding(
-                padding: EdgeInsets.only(right: 10.w, bottom: 10.h),
-                child: Icon(
-                  Icons.notifications,
-                  color: Colors.white,
-                  size: 24.sp,
-                ),
-              ),
+              icon: Icon(Icons.notifications, color: Colors.white, size: 24.sp),
               onPressed: () {},
             ),
           ),

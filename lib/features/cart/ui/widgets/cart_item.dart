@@ -7,6 +7,7 @@ import 'package:ppp/features/cart/data/model/cart_model.dart';
 class CartItem extends StatelessWidget {
   const CartItem({super.key, required this.cartModel});
   final CartModel cartModel;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,44 +37,27 @@ class CartItem extends StatelessWidget {
               children: [
                 Text(
                   cartModel.title ?? '',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.r),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.displayMedium?.copyWith(color: Colors.black),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
                 verticalSpace(7),
                 Text(
                   '\$${cartModel.price}',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.r,
-                    color: Colors.green,
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.displaySmall?.copyWith(color: Colors.green),
                 ),
                 verticalSpace(10),
                 Row(
                   children: [
+                    IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
+                    Text('0', style: Theme.of(context).textTheme.displaySmall),
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(
-                        Icons.add,
-                        size: 25.r,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      '1',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25.sp,
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.remove,
-                        size: 25.r,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      icon: const Icon(Icons.remove),
                     ),
                   ],
                 ),

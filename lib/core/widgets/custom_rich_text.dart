@@ -14,19 +14,13 @@ class CustomRichText extends StatelessWidget {
           children: [
             TextSpan(
               text: '$title : ',
-              style: TextStyle(
-                fontSize: 16.sp,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.headlineMedium?.copyWith(color: Colors.blue),
             ),
             TextSpan(
               text: value,
-              style: TextStyle(
-                fontSize: 15.sp,
-                fontWeight: FontWeight.w500,
-                color: Colors.black87,
-              ),
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
           ],
         ),

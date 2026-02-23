@@ -12,7 +12,6 @@ part 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {
   final CartRepos cartRepos;
-
   CartCubit(this.cartRepos) : super(const CartState.initial());
   Future<void> getCartProducts() async {
     emit(const CartState.loading());

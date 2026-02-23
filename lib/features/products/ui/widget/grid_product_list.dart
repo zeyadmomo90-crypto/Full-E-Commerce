@@ -79,23 +79,23 @@ class ProductItem extends StatelessWidget {
               'Title : ${productModel.title ?? ''} ',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
             verticalSpace(7),
             Text(
               'Description : ${productModel.description ?? ''} ',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyLarge?.copyWith(color: Colors.black),
             ),
             verticalSpace(7),
             Text(
               'Price : \$${productModel.price}',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.green,
-                fontSize: 14.sp,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyLarge?.copyWith(color: Colors.green),
             ),
           ],
         ),

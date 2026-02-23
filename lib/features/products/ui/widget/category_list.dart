@@ -75,10 +75,9 @@ class CategoryItem extends StatelessWidget {
           },
           child: ChoiceChip(
             selected: isSelected,
-            selectedColor: isSelected ? Colors.black : Colors.grey.shade300,
             label: Text(
               categoryModel.name ?? '',
-              style: TextStyle(color: isSelected ? Colors.white : Colors.black),
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
             avatar: CachedNetworkImage(
               imageUrl: categoryModel.image ?? '',

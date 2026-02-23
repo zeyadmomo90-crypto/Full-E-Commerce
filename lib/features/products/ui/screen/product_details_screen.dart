@@ -15,56 +15,51 @@ class ProductDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Product Details')),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          child: Column(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10.r),
-                child: CachedNetworkImage(
-                  imageUrl: productModel.images?.first ?? '',
-                  placeholder: (context, url) =>
-                      const CircularProgressIndicator(),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
+          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10.r),
+                  child: CachedNetworkImage(
+                    imageUrl: productModel.images?.first ?? '',
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                  ),
                 ),
-              ),
-              verticalSpace(7),
-              Expanded(
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomRichText(
-                        title: 'Title',
-                        value: productModel.title ?? '',
-                      ),
-                      CustomRichText(
-                        title: 'Description',
-                        value: productModel.description ?? '',
-                      ),
-                      CustomRichText(
-                        title: 'Price',
-                        value: "\$${productModel.price ?? ""}",
-                      ),
-                      CustomRichText(
-                        title: 'Category',
-                        value: productModel.category?.name ?? '',
-                      ),
-                      CustomRichText(
-                        title: 'Slug',
-                        value: productModel.slug ?? '',
-                      ),
-                      verticalSpace(15),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12.r),
-                          ),
-                          minimumSize: Size(double.infinity, 50.h),
-                        ),
+                verticalSpace(7),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomRichText(
+                      title: 'Title',
+                      value: productModel.title ?? '',
+                    ),
+                    CustomRichText(
+                      title: 'Description',
+                      value: productModel.description ?? '',
+                    ),
+                    CustomRichText(
+                      title: 'Price',
+                      value: "\$${productModel.price ?? ""}",
+                    ),
+                    CustomRichText(
+                      title: 'Category',
+                      value: productModel.category?.name ?? '',
+                    ),
+                    CustomRichText(
+                      title: 'Slug',
+                      value: productModel.slug ?? '',
+                    ),
+                    verticalSpace(15),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
                         onPressed: () async {
                           final cartModel = CartModel(
                             title: productModel.title,
@@ -87,17 +82,14 @@ class ProductDetailsScreen extends StatelessWidget {
                         },
                         child: Text(
                           'Add to Cart',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.sp,
-                          ),
+                          style: Theme.of(context).textTheme.headlineSmall,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

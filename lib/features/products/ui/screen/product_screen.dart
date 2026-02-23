@@ -23,10 +23,7 @@ class ProductScreen extends StatelessWidget {
                   verticalSpace(10),
                   Text(
                     'Categories',
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   verticalSpace(5),
                   const CategoryList(),
@@ -35,10 +32,7 @@ class ProductScreen extends StatelessWidget {
                   verticalSpace(5),
                   Text(
                     'Popular Products',
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   verticalSpace(5),
                   const GridProductList(),

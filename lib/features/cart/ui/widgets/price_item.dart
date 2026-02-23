@@ -22,34 +22,24 @@ class PriceItem extends StatelessWidget {
             children: [
               Text(
                 'Total Price',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.r),
+                style: Theme.of(
+                  context,
+                ).textTheme.displayMedium?.copyWith(color: Colors.black),
               ),
               verticalSpace(6),
               Text(
                 '\$2500',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18.r,
-                  color: Colors.green,
-                ),
+                style: Theme.of(
+                  context,
+                ).textTheme.displayMedium?.copyWith(color: Colors.green),
               ),
             ],
           ),
           ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadiusGeometry.circular(12.r),
-              ),
-            ),
             onPressed: () {},
             child: Text(
               'Checkout',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16.r,
-                color: Colors.black,
-              ),
+              style: Theme.of(context).textTheme.displayMedium,
             ),
           ),
         ],

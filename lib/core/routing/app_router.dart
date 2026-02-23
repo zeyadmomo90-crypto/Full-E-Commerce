@@ -22,7 +22,6 @@ abstract class AppRouter {
         builder: (context, state) => const SplashScreen(),
       ),
 
-      // Shop Layout مع كل الـ Cubits
       GoRoute(
         path: Routers.shopLayout,
         builder: (context, state) => MultiBlocProvider(
@@ -39,7 +38,6 @@ abstract class AppRouter {
         ),
       ),
 
-      // Product Screen: نشارك نفس instances من ShopLayout
       GoRoute(
         path: Routers.productScreen,
         builder: (context, state) => MultiBlocProvider(
@@ -51,7 +49,6 @@ abstract class AppRouter {
         ),
       ),
 
-      // Cart Screen: نشارك نفس CartCubit
       GoRoute(
         path: Routers.cartScreen,
         builder: (context, state) => BlocProvider.value(
@@ -60,7 +57,6 @@ abstract class AppRouter {
         ),
       ),
 
-      // Favorite Screen: بدون Cubits إضافية
       GoRoute(
         path: Routers.favoriteScreen,
         builder: (context, state) => const FavoriteScreen(),
@@ -72,11 +68,19 @@ abstract class AppRouter {
         builder: (context, state) => const ProfileScreen(),
       ),
 
-      // Product Details Screen: نشارك نفس CartCubit
+      // GoRoute(
+      //   path: Routers.detailsProductScreen,
+      //   builder: (context, state) => BlocProvider.value(
+      //     value: context.read<CartCubit>(),
+      //     child: ProductDetailsScreen(
+      //       productModel: state.extra as ProductModel,
+      //     ),
+      //   ),
+      // ),
       GoRoute(
         path: Routers.detailsProductScreen,
-        builder: (context, state) => BlocProvider.value(
-          value: context.read<CartCubit>(),
+        builder: (context, state) => BlocProvider(
+          create: (_) => getIt<CartCubit>(),
           child: ProductDetailsScreen(
             productModel: state.extra as ProductModel,
           ),
