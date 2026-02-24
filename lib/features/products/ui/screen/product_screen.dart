@@ -4,6 +4,7 @@ import 'package:ppp/core/helpers/spacing.dart';
 import 'package:ppp/features/products/ui/widget/category_list.dart';
 import 'package:ppp/features/products/ui/widget/custom_app_bar.dart';
 import 'package:ppp/features/products/ui/widget/grid_product_list.dart';
+import 'package:ppp/generated/l10n.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({super.key});
@@ -22,7 +23,7 @@ class ProductScreen extends StatelessWidget {
                   const CustomAppBar(),
                   verticalSpace(10),
                   Text(
-                    'Categories',
+                    S.of(context).categories,
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   verticalSpace(5),
@@ -31,7 +32,7 @@ class ProductScreen extends StatelessWidget {
                   Divider(color: Colors.grey, thickness: 3.w),
                   verticalSpace(5),
                   Text(
-                    'Popular Products',
+                    S.of(context).popularProducts,
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   verticalSpace(5),

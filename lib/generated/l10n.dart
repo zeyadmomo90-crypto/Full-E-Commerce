@@ -53,13 +53,56 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Welcome to Our Shopping App`
+  String get welcomeMessage {
+    return Intl.message(
+      'Welcome to Our Shopping App',
+      name: 'welcomeMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go Started`
+  String get goStarted {
+    return Intl.message('Go Started', name: 'goStarted', desc: '', args: []);
+  }
+
+  /// `Categories`
+  String get categories {
+    return Intl.message('Categories', name: 'categories', desc: '', args: []);
+  }
+
+  /// `Popular Products`
+  String get popularProducts {
+    return Intl.message(
+      'Popular Products',
+      name: 'popularProducts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search for Products and Categories`
+  String get searchForProductsAndCategories {
+    return Intl.message(
+      'Search for Products and Categories',
+      name: 'searchForProductsAndCategories',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   const AppLocalizationDelegate();
 
   List<Locale> get supportedLocales {
-    return const <Locale>[Locale.fromSubtags(languageCode: 'en')];
+    return const <Locale>[
+      Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'ar'),
+    ];
   }
 
   @override

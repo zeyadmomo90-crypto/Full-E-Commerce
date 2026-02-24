@@ -1,8 +1,16 @@
+import 'package:flutter/material.dart';
+
 bool isLoggedInUser = false;
 
 class SharedPrefKeys {
   static const String userToken = 'userToken';
   static const String isDarkTheme = 'isDarkTheme';
+  static const String currentLangCode = 'currentLangCode';
+}
+
+class AppLanguages {
+  static Locale getArabicLanguage() => const Locale('ar');
+  static Locale getEnglishLanguage() => const Locale('en');
 }
 
 extension StringExtension on String? {

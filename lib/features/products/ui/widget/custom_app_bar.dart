@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ppp/generated/l10n.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -40,7 +41,7 @@ class CustomAppBar extends StatelessWidget {
               decoration: InputDecoration(
                 border: InputBorder.none,
                 prefixIcon: const Icon(Icons.search),
-                hintText: 'Search for products and categories',
+                hintText: S.of(context).searchForProductsAndCategories,
                 hintStyle: Theme.of(context).textTheme.titleLarge,
               ),
             ),

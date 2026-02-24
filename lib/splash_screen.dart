@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ppp/core/helpers/constance.dart';
 import 'package:ppp/core/helpers/spacing.dart';
+import 'package:ppp/core/logic/toggle_lang_cubit/toggle_lang_cubit.dart';
 import 'package:ppp/core/logic/toggle_theme_cubit/toggle_theme_cubit.dart';
 import 'package:ppp/core/routing/routers.dart';
 import 'package:ppp/core/themes/dark_theme.dart';
 import 'package:ppp/core/themes/light_theme.dart';
+import 'package:ppp/generated/l10n.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -18,12 +21,23 @@ class SplashScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.dark_mode),
-            onPressed: () {
+            onPressed: () async {
               final currentTheme = context.read<ToggleThemeCubit>().state;
               final newTheme = currentTheme == LightTheme.lightTheme
                   ? DarkTheme.darkTheme
                   : LightTheme.lightTheme;
               context.read<ToggleThemeCubit>().toggleTheme(newTheme);
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.language),
+            onPressed: () async {
+              final currentLocale = context.read<ToggleLangCubit>().state;
+              final newLocale =
+                  currentLocale == AppLanguages.getArabicLanguage()
+                  ? AppLanguages.getEnglishLanguage()
+                  : AppLanguages.getArabicLanguage();
+              context.read<ToggleLangCubit>().changeLanguage(newLocale);
             },
           ),
         ],
@@ -47,7 +61,7 @@ class SplashScreen extends StatelessWidget {
               ),
               verticalSpace(10),
               Text(
-                'Welcome to Our Shopping App',
+                S.of(context).welcomeMessage,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               verticalSpace(10),
@@ -58,7 +72,7 @@ class SplashScreen extends StatelessWidget {
                     context.pushReplacement(Routers.shopLayout);
                   },
                   child: Text(
-                    'Go Started',
+                    S.of(context).goStarted,
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),

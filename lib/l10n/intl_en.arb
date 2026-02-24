@@ -1,1 +1,7 @@
-{}
+{
+  "welcomeMessage": "Welcome to Our Shopping App",
+  "goStarted": "Go Started",
+  "categories": "Categories",
+  "popularProducts": "Popular Products",
+  "searchForProductsAndCategories": "Search for Products and Categories"
+}

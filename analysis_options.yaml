@@ -5,10 +5,13 @@ analyzer:
     unused_import: error
     unused_local_variable: error
     dead_code: error
+    missing_required_param: error
+    missing_return: error
+    invalid_use_of_protected_member: error
 
 linter:
   rules:
-    # Performance & const
+    # ---------------- PERFORMANCE ----------------
     prefer_const_constructors: true
     prefer_const_constructors_in_immutables: true
     prefer_const_literals_to_create_immutables: true
@@ -16,24 +19,28 @@ linter:
     avoid_unnecessary_containers: true
     sized_box_for_whitespace: true
 
-    # Clean code
+    # ---------------- CLEAN CODE ----------------
     prefer_final_locals: true
     prefer_final_fields: true
     unnecessary_this: true
     avoid_redundant_argument_values: true
+    avoid_print: true
+    avoid_dynamic_calls: true
+    unawaited_futures: true
 
-    # Readability
+    # ---------------- READABILITY ----------------
     always_use_package_imports: true
     require_trailing_commas: true
     curly_braces_in_flow_control_structures: true
+    lines_longer_than_80_chars: true
 
-    # Safety
+    # ---------------- SAFETY ----------------
     use_key_in_widget_constructors: true
     avoid_null_checks_in_equality_operators: true
 
-    # Best practices
+    # ---------------- BEST PRACTICES ----------------
     avoid_function_literals_in_foreach_calls: true
     avoid_positional_boolean_parameters: true
 
-    # Style
+    # ---------------- STYLE ----------------
     prefer_single_quotes: true
