@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ppp/core/networking/api_error_model.dart';
@@ -19,7 +17,6 @@ class CartCubit extends Cubit<CartState> {
     resultProduct.when(
       success: (success) {
         emit(CartState.loaded(success));
-        log(success.length.toString());
       },
       failure: (failure) => emit(CartState.error(failure)),
     );
@@ -55,6 +52,45 @@ class CartCubit extends Cubit<CartState> {
         await getCartProducts();
       },
       failure: (failure) => emit(CartState.error(failure)),
+    );
+  }
+
+  void increment(int productId) {
+    state.whenOrNull(
+      loaded: (cart) {
+        final updated = cart.map((item) {
+          if (item.id == productId) {
+            return item.copyWith(quantity: item.quantity! + 1);
+          }
+          return item;
+        }).toList();
+
+        emit(CartState.loaded(updated));
+      },
+    );
+  }
+
+  void decrement(int productId) {
+    state.whenOrNull(
+      loaded: (cart) {
+        final updated = cart.map((cartModel) {
+          if (cartModel.id == productId) {
+            final newQunatity = cartModel.quantity! > 1
+                ? cartModel.quantity! - 1
+                : 1;
+            return cartModel.copyWith(quantity: newQunatity);
+          }
+          return cartModel;
+        }).toList();
+        emit(CartState.loaded(updated));
+      },
+    );
+  }
+
+  double getTotalPrice(List<CartModel> cart) {
+    return cart.fold<double>(
+      0.0,
+      (total, item) => total + ((item.price ?? 0) * (item.quantity ?? 0)),
     );
   }
 }

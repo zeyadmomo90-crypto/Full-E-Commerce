@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'package:json_annotation/json_annotation.dart';
@@ -12,7 +13,7 @@ class CartModel {
   final List<String>? images;
   final int? quantity;
 
-  CartModel({this.id, this.title, this.price, this.images, this.quantity});
+  CartModel({this.id, this.title, this.price, this.images, this.quantity = 1});
 
   Map<String, dynamic> toJson() {
     final map = _$CartModelToJson(this);
@@ -31,6 +32,22 @@ class CartModel {
       images: json['images'] != null
           ? List<String>.from(jsonDecode(json['images']))
           : null,
+    );
+  }
+
+  CartModel copyWith({
+    int? id,
+    String? title,
+    int? price,
+    List<String>? images,
+    int? quantity,
+  }) {
+    return CartModel(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      price: price ?? this.price,
+      images: images ?? this.images,
+      quantity: quantity ?? this.quantity,
     );
   }
 }

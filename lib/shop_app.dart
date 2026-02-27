@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ppp/core/logic/toggle_lang_cubit/toggle_lang_cubit.dart';
-import 'package:ppp/core/logic/toggle_theme_cubit/toggle_theme_cubit.dart';
+import 'package:ppp/core/di/dependency_injection.dart';
+import 'package:ppp/core/logic/change_lang_cubit/change_lang_cubit.dart';
+import 'package:ppp/core/logic/change_theme_cubit/change_theme_cubit.dart';
 import 'package:ppp/core/routing/app_router.dart';
 import 'package:ppp/generated/l10n.dart';
 
@@ -22,12 +23,16 @@ class SHoppingApp extends StatelessWidget {
       designSize: const Size(375, 812),
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => ToggleThemeCubit(initialTheme)),
-          BlocProvider(create: (context) => ToggleLangCubit(initialLocale)),
+          BlocProvider(
+            create: (_) => getIt<ChangeThemeCubit>(param1: initialTheme),
+          ),
+          BlocProvider(
+            create: (_) => getIt<ChangeLangCubit>(param1: initialLocale),
+          ),
         ],
-        child: BlocBuilder<ToggleThemeCubit, ThemeData>(
+        child: BlocBuilder<ChangeThemeCubit, ThemeData>(
           builder: (context, theme) {
-            return BlocBuilder<ToggleLangCubit, Locale>(
+            return BlocBuilder<ChangeLangCubit, Locale>(
               builder: (context, locale) {
                 return MaterialApp.router(
                   theme: theme,

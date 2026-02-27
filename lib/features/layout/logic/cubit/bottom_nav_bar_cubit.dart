@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:ppp/features/cart/ui/screen/cart_screen.dart';
+import 'package:ppp/features/favorite/ui/favorite_screen.dart';
 import 'package:ppp/features/products/ui/screen/product_screen.dart';
-import 'package:ppp/features/testing/favorite_screen.dart';
-import 'package:ppp/features/testing/profile_screen.dart';
+import 'package:ppp/features/test/profile_screen.dart';
 
 part 'bottom_nav_bar_state.dart';
 

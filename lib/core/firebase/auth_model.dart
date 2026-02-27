@@ -4,14 +4,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ppp/core/firebase/fire_store_user.dart';
-import 'package:ppp/core/firebase/user_model.dart';
 import 'package:ppp/core/routing/routers.dart';
+import 'package:ppp/features/auth/create_user/data/models/create_user_request.dart';
 
 class AuthModel {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
-
+  final TextEditingController userPicController = TextEditingController();
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FireStoreUser fireStoreUser = FireStoreUser();
   void dispose() {
@@ -30,13 +30,12 @@ class AuthModel {
       log('Login Success: ${userCredential.user?.uid}');
       log('Email: ${userCredential.user?.email}');
 
-      context.go(Routers.productScreen);
+      context.go(Routers.shopLayout);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('No user found for that email.')),
         );
-        log('No user found for that email.');
       } else if (e.code == 'wrong-password') {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -75,15 +74,15 @@ class AuthModel {
       }
 
       await fireStoreUser.addUserToFireStore(
-        UserModel(
+        CreateUserRequest(
           email: user.email ?? '',
           name: nameController.text.trim(),
-          userPicture: '',
+          avatar: userPicController.text.trim(),
           userId: user.uid,
         ),
       );
 
-      context.push(Routers.productScreen);
+      context.push(Routers.shopLayout);
     } catch (e) {
       await auth.currentUser?.delete();
 
@@ -95,48 +94,3 @@ class AuthModel {
     }
   }
 }
-// Register Screen
-
-// → createAccountWithEmailAndPassword
-
-// 🔹 Login Screen
-
-// → login
-
-// 🔹 Home Screen
-
-// → signOut
-
-
-// Future<void> signUp(BuildContext context) async {
-  //   try {
-  //     final userCredential = await auth.createUserWithEmailAndPassword(
-  //       email: emailController.text.trim(),
-  //       password: passwordController.text.trim(),
-  //     );
-
-  //     log('Sign Up Success: ${userCredential.user?.uid}');
-
-  //     context.push(Routers.loginScreen);
-  //   } on FirebaseAuthException catch (e) {
-  //     if (e.code == 'weak-password') {
-  //       ScaffoldMessenger.of(context).showSnackBar(
-  //         const SnackBar(content: Text('The password provided is too weak.')),
-  //       );
-  //       log('Weak password provided.');
-  //     } else if (e.code == 'email-already-in-use') {
-  //       ScaffoldMessenger.of(context).showSnackBar(
-  //         const SnackBar(
-  //           content: Text('The account already exists for that email.'),
-  //         ),
-  //       );
-  //       log('Email already in use.');
-  //     }
-  //   } catch (e) {
-  //     log('Sign Up Error: $e');
-  //   }
-  // }
-
-
-
-

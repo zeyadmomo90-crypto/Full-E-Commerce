@@ -26,6 +26,9 @@ class CartScreen extends StatelessWidget {
                   child: Text(state.error.message ?? 'Unexpected Error'),
                 );
               } else if (state is CartLoaded) {
+                final total = context.read<CartCubit>().getTotalPrice(
+                  state.cart,
+                );
                 return Column(
                   children: [
                     Expanded(
@@ -38,7 +41,7 @@ class CartScreen extends StatelessWidget {
                       ),
                     ),
                     verticalSpace(10),
-                    const PriceItem(),
+                    PriceItem(total: total),
                     verticalSpace(10),
                   ],
                 );

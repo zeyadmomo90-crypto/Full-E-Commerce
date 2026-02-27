@@ -29,10 +29,33 @@ class ApiErrorHandler {
 }
 
 ApiErrorModel _handleError(dynamic data) {
+  // لو السيرفر رجع List مباشرة
+  if (data is List) {
+    return ApiErrorModel(
+      message: data.join('\n'),
+      statusCode: 400,
+      error: 'Bad Request',
+    );
+  }
+
+  // لو السيرفر رجع Map
+  if (data is Map<String, dynamic>) {
+    final rawMessage = data['message'];
+
+    return ApiErrorModel(
+      message: rawMessage is List
+          ? rawMessage.join('\n')
+          : rawMessage?.toString() ??
+                'Unknown error occurred. Please try again later.',
+      statusCode: data['statusCode'],
+      error: data['error']?.toString(),
+    );
+  }
+
+  // أي شكل غير متوقع
   return ApiErrorModel(
-    message:
-        data['message'] ?? 'Unknown error occurred. Please try again later.',
-    statusCode: data['statusCode'],
-    error: data['error'],
+    message: 'Unexpected error format',
+    statusCode: 500,
+    error: 'Unknown',
   );
 }

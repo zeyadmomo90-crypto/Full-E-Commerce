@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ppp/core/helpers/spacing.dart';
 import 'package:ppp/features/cart/data/model/cart_model.dart';
+import 'package:ppp/features/cart/logic/cubit/cart_cubit.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({super.key, required this.cartModel});
@@ -53,10 +55,20 @@ class CartItem extends StatelessWidget {
                 verticalSpace(10),
                 Row(
                   children: [
-                    IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
-                    Text('0', style: Theme.of(context).textTheme.displaySmall),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.read<CartCubit>().increment(cartModel.id ?? 0);
+                      },
+                      icon: const Icon(Icons.add),
+                    ),
+                    Text(
+                      '${cartModel.quantity}',
+                      style: Theme.of(context).textTheme.displaySmall,
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        context.read<CartCubit>().decrement(cartModel.id ?? 0);
+                      },
                       icon: const Icon(Icons.remove),
                     ),
                   ],

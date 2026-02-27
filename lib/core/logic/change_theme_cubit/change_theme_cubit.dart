@@ -4,9 +4,9 @@ import 'package:ppp/core/helpers/constance.dart';
 import 'package:ppp/core/helpers/storage_helper.dart';
 import 'package:ppp/core/themes/dark_theme.dart';
 
-class ToggleThemeCubit extends Cubit<ThemeData> {
+class ChangeThemeCubit extends Cubit<ThemeData> {
   final ThemeData initialTheme;
-  ToggleThemeCubit(this.initialTheme) : super(initialTheme);
+  ChangeThemeCubit(this.initialTheme) : super(initialTheme);
 
   void toggleTheme(ThemeData theme) {
     emit(theme);

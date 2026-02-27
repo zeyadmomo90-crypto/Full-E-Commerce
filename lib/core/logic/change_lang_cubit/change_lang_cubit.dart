@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ppp/core/helpers/constance.dart';
 import 'package:ppp/core/helpers/storage_helper.dart';
 
-class ToggleLangCubit extends Cubit<Locale> {
+class ChangeLangCubit extends Cubit<Locale> {
   final Locale intialLocale;
-  ToggleLangCubit(this.intialLocale) : super(intialLocale);
+  ChangeLangCubit(this.intialLocale) : super(intialLocale);
 
   void changeLanguage(Locale locale) {
     emit(locale);

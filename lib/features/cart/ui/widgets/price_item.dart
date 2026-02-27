@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ppp/core/helpers/spacing.dart';
 
 class PriceItem extends StatelessWidget {
-  const PriceItem({super.key});
-
+  const PriceItem({super.key, required this.total});
+  final double total;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +28,7 @@ class PriceItem extends StatelessWidget {
               ),
               verticalSpace(6),
               Text(
-                '\$2500',
+                '\$${total.toStringAsFixed(2)}',
                 style: Theme.of(
                   context,
                 ).textTheme.displayMedium?.copyWith(color: Colors.green),
