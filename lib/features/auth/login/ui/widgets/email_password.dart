@@ -73,7 +73,9 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
           verticalSpace(25),
           TextFormField(
             validator: (value) {
-              if (value == null || value.isEmpty) {
+              if (value == null ||
+                  value.isEmpty ||
+                  !AppRegex.isPasswordValid(value)) {
                 return 'Please enter a valid password';
               }
               return null;

@@ -90,7 +90,9 @@ class _CreateUserFormState extends State<CreateUserForm> {
           verticalSpace(20),
           TextFormField(
             validator: (value) {
-              if (value == null || value.isEmpty) {
+              if (value == null ||
+                  value.isEmpty ||
+                  !AppRegex.isPasswordValid(value)) {
                 return 'Please enter a valid Password';
               }
               return null;
