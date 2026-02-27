@@ -16,7 +16,6 @@ class CreateUserForm extends StatefulWidget {
 class _CreateUserFormState extends State<CreateUserForm> {
   bool lowerCase = false;
   bool upperCase = false;
-  // bool specialChar = false;
   bool number = false;
   bool minLength = false;
   late TextEditingController passwordController;
@@ -32,7 +31,6 @@ class _CreateUserFormState extends State<CreateUserForm> {
       setState(() {
         lowerCase = AppRegex.hasLowerCase(passwordController.text);
         upperCase = AppRegex.hasUpperCase(passwordController.text);
-        // specialChar = AppRegex.hasSpecialCharacter(passwordController.text);
         number = AppRegex.hasNumber(passwordController.text);
         minLength = AppRegex.hasMinLength(passwordController.text);
       });
@@ -72,24 +70,6 @@ class _CreateUserFormState extends State<CreateUserForm> {
               prefixIcon: Icon(Icons.person, color: AppColors.primary),
             ),
           ),
-          verticalSpace(20),
-          // TextFormField(
-          //   validator: (value) {
-          //     if (value == null || value.isEmpty) {
-          //       return 'Please enter a valid phone number';
-          //     }
-          //     return null;
-          //   },
-          //   cursorColor: AppColors.primary,
-          //   keyboardType: TextInputType.phone,
-          //   controller: createUserCubit.phoneController,
-          //   decoration: const InputDecoration(
-          //     hintText: 'Enter your PhoneNumber...',
-          //     labelText: 'Phone',
-          //     prefixIcon: Icon(Icons.phone, color: AppColors.primary),
-          //   ),
-          // ),
-          // verticalSpace(20),
           TextFormField(
             validator: (value) {
               if (value == null || value.isEmpty) {

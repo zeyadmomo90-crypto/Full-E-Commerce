@@ -16,7 +16,6 @@ class EmailAndPassword extends StatefulWidget {
 class _EmailAndPasswordState extends State<EmailAndPassword> {
   bool lowerCase = false;
   bool upperCase = false;
-  // bool specialChar = false;
   bool number = false;
   bool minLength = false;
   late TextEditingController passwordController;
@@ -32,7 +31,6 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
       setState(() {
         lowerCase = AppRegex.hasLowerCase(passwordController.text);
         upperCase = AppRegex.hasUpperCase(passwordController.text);
-        // specialChar = AppRegex.hasSpecialCharacter(passwordController.text);
         number = AppRegex.hasNumber(passwordController.text);
         minLength = AppRegex.hasMinLength(passwordController.text);
       });
@@ -104,7 +102,6 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
           PasswordValidation(
             lowerCase: lowerCase,
             upperCase: upperCase,
-            // specialChar: specialChar,
             number: number,
             minLength: minLength,
           ),

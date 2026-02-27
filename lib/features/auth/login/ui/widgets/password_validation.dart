@@ -7,13 +7,11 @@ class PasswordValidation extends StatelessWidget {
     super.key,
     required this.lowerCase,
     required this.upperCase,
-    // required this.specialChar,
     required this.number,
     required this.minLength,
   });
   final bool lowerCase;
   final bool upperCase;
-  // final bool specialChar;
   final bool number;
   final bool minLength;
 
@@ -31,11 +29,7 @@ class PasswordValidation extends StatelessWidget {
           finishVLD: upperCase,
         ),
         verticalSpace(10),
-        // BuildValidationRow(
-        //   text: 'At least 1 special character',
-        //   finishVLD: specialChar,
-        // ),
-        verticalSpace(10),
+
         BuildValidationRow(text: 'At least 1 number', finishVLD: number),
         verticalSpace(10),
         BuildValidationRow(

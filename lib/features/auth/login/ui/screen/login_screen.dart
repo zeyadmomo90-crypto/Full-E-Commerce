@@ -7,7 +7,7 @@ import 'package:ppp/features/auth/login/cubit/login_cubit.dart';
 import 'package:ppp/features/auth/login/ui/widgets/dont_have_an_account.dart';
 import 'package:ppp/features/auth/login/ui/widgets/email_password.dart';
 import 'package:ppp/features/auth/login/ui/widgets/login_bloc_listener.dart';
-import 'package:ppp/features/auth/login/ui/widgets/teems_and_condition.dart';
+import 'package:ppp/features/auth/login/ui/widgets/terms_and_condition.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -38,8 +38,11 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {
-                      loginAndThenGoToProductScreen(context);
+                    onPressed: () async {
+                      final cubit = context.read<LoginCubit>();
+                      if (cubit.formKey.currentState!.validate()) {
+                        await cubit.loginProcess();
+                      }
                     },
                     child: Text(
                       'Login',
@@ -59,11 +62,5 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void loginAndThenGoToProductScreen(BuildContext context) {
-    if (context.read<LoginCubit>().formKey.currentState!.validate()) {
-      context.read<LoginCubit>().loginProcess();
-    }
   }
 }

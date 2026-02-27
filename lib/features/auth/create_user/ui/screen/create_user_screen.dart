@@ -7,7 +7,7 @@ import 'package:ppp/features/auth/create_user/logic/cubit/create_user_cubit.dart
 import 'package:ppp/features/auth/create_user/ui/widgets/already_have_account.dart';
 import 'package:ppp/features/auth/create_user/ui/widgets/create_user_bloc_listener.dart';
 import 'package:ppp/features/auth/create_user/ui/widgets/create_user_form.dart';
-import 'package:ppp/features/auth/login/ui/widgets/teems_and_condition.dart';
+import 'package:ppp/features/auth/login/ui/widgets/terms_and_condition.dart';
 
 class CreateUserScreen extends StatelessWidget {
   const CreateUserScreen({super.key});
@@ -28,8 +28,11 @@ class CreateUserScreen extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {
-                      createUserAndThenGoToProductScreen(context);
+                    onPressed: () async {
+                      final cubit = context.read<CreateUserCubit>();
+                      if (cubit.formKey.currentState!.validate()) {
+                        await cubit.createUser();
+                      }
                     },
                     child: Text(
                       'Create Account',
@@ -49,11 +52,5 @@ class CreateUserScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void createUserAndThenGoToProductScreen(BuildContext context) {
-    if (context.read<CreateUserCubit>().formKey.currentState!.validate()) {
-      context.read<CreateUserCubit>().createUser();
-    }
   }
 }

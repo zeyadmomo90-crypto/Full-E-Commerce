@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:ppp/core/firebase/auth_model.dart';
 import 'package:ppp/core/helpers/database_helper.dart';
 import 'package:ppp/core/logic/change_lang_cubit/change_lang_cubit.dart';
 import 'package:ppp/core/logic/change_theme_cubit/change_theme_cubit.dart';
@@ -62,11 +63,15 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<FavoriteRepos>(() => FavoriteRepos(getIt()));
   getIt.registerLazySingleton<FavoriteCubit>(() => FavoriteCubit(getIt()));
 
+  // authModel
+  getIt.registerLazySingleton<AuthModel>(() => AuthModel());
   // login
   getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()));
-  getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
+  getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt(), getIt()));
 
   // CreateUser
   getIt.registerLazySingleton<CreateUserRepos>(() => CreateUserRepos(getIt()));
-  getIt.registerFactory<CreateUserCubit>(() => CreateUserCubit(getIt()));
+  getIt.registerFactory<CreateUserCubit>(
+    () => CreateUserCubit(getIt(), getIt()),
+  );
 }
