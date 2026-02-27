@@ -70,6 +70,7 @@ class _CreateUserFormState extends State<CreateUserForm> {
               prefixIcon: Icon(Icons.person, color: AppColors.primary),
             ),
           ),
+          verticalSpace(20),
           TextFormField(
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -169,11 +170,5 @@ class _CreateUserFormState extends State<CreateUserForm> {
         ],
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    passwordController.dispose();
-    super.dispose();
   }
 }

@@ -49,6 +49,7 @@ class CreateUserCubit extends Cubit<CreateUserState> {
     passwordController.dispose();
     nameController.dispose();
     userPicController.dispose();
+    confirmPasswordController.dispose();
     return super.close();
   }
 }
