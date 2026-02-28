@@ -4,7 +4,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ppp/core/di/dependency_injection.dart';
 import 'package:ppp/core/helpers/constance.dart';
-import 'package:ppp/core/helpers/storage_helper.dart';
 import 'package:ppp/core/logic/change_lang_cubit/change_lang_cubit.dart';
 import 'package:ppp/core/logic/change_theme_cubit/change_theme_cubit.dart';
 import 'package:ppp/core/routing/app_router.dart';
@@ -14,10 +13,12 @@ import 'package:ppp/generated/l10n.dart';
 class SHoppingApp extends StatelessWidget {
   final ThemeData initialTheme;
   final Locale initialLocale;
+  final AppRouter appRouter;
   const SHoppingApp({
     super.key,
     required this.initialTheme,
     required this.initialLocale,
+    required this.appRouter,
   });
 
   @override
@@ -50,7 +51,7 @@ class SHoppingApp extends StatelessWidget {
                   supportedLocales: S.delegate.supportedLocales,
                   locale: locale,
                   debugShowCheckedModeBanner: false,
-                  onGenerateRoute: AppRouter().generateRoute,
+                  onGenerateRoute: appRouter.generateRoute,
                   initialRoute: isLoggedInUser
                       ? Routes.shopLayout
                       : Routes.loginScreen,
@@ -61,16 +62,5 @@ class SHoppingApp extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-Future<void> getUserToken() async {
-  final userLoggedIn = await StorageHelper.getSecuredString(
-    SharedPrefKeys.usertoken,
-  );
-  if (!userLoggedIn.isNullOrEmpty()) {
-    isLoggedInUser = true;
-  } else {
-    isLoggedInUser = false;
   }
 }
