@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:ppp/core/routing/routers.dart';
+import 'package:ppp/core/helpers/extentions.dart';
+import 'package:ppp/core/routing/routes.dart';
 import 'package:ppp/core/themes/app_colors.dart';
 
 class DontHaveAnAccount extends StatelessWidget {
@@ -19,7 +19,7 @@ class DontHaveAnAccount extends StatelessWidget {
           TextSpan(
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                context.push(Routers.createUserScreen);
+                context.pushNamed(Routes.createUserScreen);
               },
             text: ' Sign Up',
             style: Theme.of(

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:ppp/core/helpers/constance.dart';
+import 'package:ppp/core/helpers/extentions.dart';
 import 'package:ppp/core/helpers/spacing.dart';
 import 'package:ppp/core/logic/change_lang_cubit/change_lang_cubit.dart';
 import 'package:ppp/core/logic/change_theme_cubit/change_theme_cubit.dart';
-import 'package:ppp/core/routing/routers.dart';
+import 'package:ppp/core/routing/routes.dart';
 import 'package:ppp/core/themes/dark_theme.dart';
 import 'package:ppp/core/themes/light_theme.dart';
 import 'package:ppp/generated/l10n.dart';
@@ -70,7 +70,7 @@ class SplashScreen extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      context.pushReplacement(Routers.loginScreen);
+                      context.pushReplacementNamed(Routes.loginScreen);
                     },
                     child: Text(
                       S.of(context).goStarted,

@@ -4,7 +4,6 @@ import 'package:ppp/core/helpers/storage_helper.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioFactory {
-  /// private constructor as I don't want to allow creating an instance of this class
   DioFactory._();
 
   static Dio? dio;
@@ -41,7 +40,6 @@ class DioFactory {
   static void addDioInterceptor() {
     dio?.interceptors.add(
       PrettyDioLogger(
-        // شكل response في terminal عندي
         requestBody: true,
         requestHeader: true,
         responseHeader: true,

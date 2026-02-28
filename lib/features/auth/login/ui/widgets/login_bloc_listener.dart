@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:ppp/core/routing/routers.dart';
+import 'package:ppp/core/helpers/extentions.dart';
+import 'package:ppp/core/routing/routes.dart';
 import 'package:ppp/core/themes/app_colors.dart';
 import 'package:ppp/features/auth/login/cubit/login_cubit.dart';
 import 'package:ppp/features/auth/login/cubit/login_state.dart';
@@ -27,7 +27,10 @@ class LoginBlocListener extends StatelessWidget {
           },
           success: (_) {
             context.pop();
-            context.go(Routers.shopLayout);
+            context.pushNamedAndRemoveUntil(
+              Routes.shopLayout,
+              predicate: (route) => false,
+            );
           },
           error: (apiError) {
             context.pop();

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
+import 'package:ppp/core/helpers/extentions.dart';
 import 'package:ppp/core/networking/api_error_model.dart';
-import 'package:ppp/core/routing/routers.dart';
+import 'package:ppp/core/routing/routes.dart';
 import 'package:ppp/core/themes/app_colors.dart';
 import 'package:ppp/features/auth/create_user/logic/cubit/create_user_cubit.dart';
 import 'package:ppp/features/auth/create_user/logic/cubit/create_user_state.dart';
@@ -59,7 +59,7 @@ class CreateUserBlocListener extends StatelessWidget {
         TextButton(
           onPressed: () {
             context.pop();
-            context.push(Routers.loginScreen);
+            context.pushNamed(Routes.loginScreen);
           },
           child: const Text('Continue'),
         ),

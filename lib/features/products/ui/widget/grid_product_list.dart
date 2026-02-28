@@ -2,9 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
+import 'package:ppp/core/helpers/extentions.dart';
 import 'package:ppp/core/helpers/spacing.dart';
-import 'package:ppp/core/routing/routers.dart';
+import 'package:ppp/core/routing/routes.dart';
 import 'package:ppp/features/products/data/model/product_model.dart';
 import 'package:ppp/features/products/logic/cubit/product_cubit.dart';
 
@@ -56,7 +56,7 @@ class ProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(Routers.detailsProductScreen, extra: productModel);
+        context.pushNamed(Routes.detailsProductScreen, arguments: productModel);
       },
       child: Container(
         padding: EdgeInsets.all(10.w),

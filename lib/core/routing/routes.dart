@@ -1,4 +1,4 @@
-abstract class Routers {
+abstract class Routes {
   static const splashScreen = '/';
   static const shopLayout = '/shopLayout';
   static const productScreen = '/productScreen';

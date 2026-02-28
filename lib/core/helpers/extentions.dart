@@ -21,7 +21,7 @@ extension Navigation on BuildContext {
     ).pushNamedAndRemoveUntil(routeName, predicate, arguments: arguments);
   }
 
-  // void pop() => Navigator.of(this).pop();
+  void pop() => Navigator.of(this).pop();
 }
 
 extension StringExtension on String? {

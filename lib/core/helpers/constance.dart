@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+bool isLoggedInUser = false;
+
 class SharedPrefKeys {
   static const String isDarkTheme = 'isDarkTheme';
   static const String currentLangCode = 'currentLangCode';
