@@ -10,11 +10,11 @@ import 'package:ppp/core/routing/app_router.dart';
 import 'package:ppp/core/routing/routes.dart';
 import 'package:ppp/generated/l10n.dart';
 
-class SHoppingApp extends StatelessWidget {
+class FullEcommerceApp extends StatelessWidget {
   final ThemeData initialTheme;
   final Locale initialLocale;
   final AppRouter appRouter;
-  const SHoppingApp({
+  const FullEcommerceApp({
     super.key,
     required this.initialTheme,
     required this.initialLocale,
@@ -25,6 +25,7 @@ class SHoppingApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
+      minTextAdapt: true,
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
